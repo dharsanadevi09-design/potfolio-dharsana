@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    body {
+      background-color: #1F252E;
+      color: white;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      padding: 20px;
+      font-size: x-large;
+      text-align: center;
+    }
+
+    /* Navigation */
+    nav {
+      background: #111;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+
+    nav ul li a:hover {
+      background: #00E8F8;
+      color: black;
+      border-radius: 5px;
+    }
+
+    /* Hamburger for mobile */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      color: #00E8F8;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        width: 100%;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        padding: 10px 0;
+      }
+
+      nav ul.showing {
+        display: flex;
+      }
+
+      nav ul li {
+        text-align: center;
+        margin: 10px 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Hero section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .hero img {
+      height: 250px;
+      width: 250px;
+      border-radius: 50%;
+      box-shadow: 0px 0px 10px #00E8F8;
+      margin: 20px;
+    }
+
+    .hero-text {
+      max-width: 500px;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .hero-text h1 {
+      color: #00E8F8;
+      text-shadow: 2px 2px 5px #00E8F8;
+    }
+
+    .social,
+    .k {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social a,
+    .k a {
+      color: #00E8F8;
+      font-size: 2rem;
+      border: 0px solid #00E8F8;
+      padding: .5rem;
+      border-radius: 50%;
+      text-align: center;
+      width: 35px;
+      height: 35px;
+    }
+
+    .social a:hover,
+    .k a:hover {
+      color: white;
+      background: #00E8F8;
+      box-shadow: 0 0 10px #00E8F8;
+    }
+
+    /* Section styling */
+    section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    section h1 {
+      text-shadow: 2px 2px 5px rgb(240, 247, 240);
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: auto;
+      font-size: large;
+      line-height: 1.6;
+    }
+
+    .skills img {
+      width: 150px;
+      height: 150px;
+      margin: 10px;
+      box-shadow: 0px 0px 10px #00E8F8;
+      border-radius: 10px;
+    }
+
+    .scroll-container {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 10px;
+    }
+
+    .scroll-container img {
+      display: inline-block;
+      width: 300px;
+      height: 200px;
+      margin: 10px;
+      border: 1px solid #00E8F8;
+      box-shadow: 0 0 10px #00E8F8;
+    }
+
+    /* Certificates */
+    .cert-box {
+      border: solid 1px #00E8F8;
+      max-width: 600px;
+      width: 90%;
+      margin: 20px auto;
+      padding: 20px;
+      box-shadow: 0px 0px 10px #00E8F8;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .cert-box h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .cert-box a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: #00E8F8;
+      color: black;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .cert-box a:hover {
+      background: white;
+      color: black;
+    }
+
+    /* Contact */
+    form {
+      max-width: 500px;
+      margin: auto;
+      text-align: left;
+    }
+
+    form input,
+    form button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    form input {
+      border: 1px solid #00E8F8;
+      background: transparent;
+      color: white;
+    }
+
+    form button {
+      background: #00E8F8;
+      color: black;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background: white;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <span style="color:#00E8F8; font-size: xx-large;">D</span>harsana
+    <span style="color: #00E8F8;">D</span>evi
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <button class="menu-toggle"><i class="fas fa-bars"></i> Menu</button>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#abouted">About</a></li>
+      <li><a href="#Skills">Skills</a></li>
+      <li><a href="#Projects">Projects</a></li>
+      <li><a href="#Certificate">Certificates</a></li>
+      <li><a href="#Contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <img src="im7.jpg" alt="profile">
+    <div class="hero-text">
+      <p>Hello!</p>
+      <p>I'm <strong>DHARSANA DEVI</strong></p>
+      <h1>WEB DEVELOPER</h1>
+      <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Studying at AAA College of Engineering and Technology, Computer Science Department.</p>
+      <div class="k">
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section class="about" id="abouted">
+    <h1>About Me</h1>
+    <p>
+      I am a Computer Science and Engineering student at AAA College of Engineering and Technology.
+      My ambition is to become a successful Software Engineer. I am passionate about coding,
+      developing innovative solutions, and contributing to the technology industry.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills" id="Skills">
+    <h1>Skills</h1>
+    <img src="im9.jpg" alt="">
+    <img src="im10.jpg" alt="">
+    <img src="im11.jpg" alt="">
+  </section>
+
+  <!-- Projects -->
+  <section id="Projects">
+    <h1>Projects</h1>
+    <div class="scroll-container">
+      <img src="im12.jpg" alt="">
+      <img src="im13.jpg" alt="">
+      <img src="im14.jpg" alt="">
+    </div>
+  </section>
+
+  <!-- Certificates -->
+  <section id="Certificate">
+    <h1>Certificates</h1>
+    <div class="cert-box">
+      <h2>MONGO DB Basic for Students</h2>
+      <a href="https://drive.google.com/file/d/1AZpBU-WxZMbwgV1d-MTOsNPbD7o-dmhA/view?usp=drivesdk">View</a>
+    </div>
+    <div class="cert-box">
+      <h2>Google Analytics</h2>
+      <a href="https://drive.google.com/file/d/1AclI44EXQLMEyS2bpyC4WALct4GjJQU-/view?usp=drivesdk">View</a>
+    </div>
+    <div class="cert-box">
+      <h2>Oracle Cloud Infrastructure AI Foundations Associate</h2>
+      <a href="https://drive.google.com/file/d/1AflSDTkXgCiRV_43ShQ0iMHOZ8kiAxGX/view?usp=drivesdk">View</a>
+    </div>
+    <div class="cert-box">
+      <h2>Oracle Cloud Infrastructure Foundations Associate</h2>
+      <a href="https://drive.google.com/file/d/1AhdFkkgJLAI0TqKnbXsNG_GKsz168FIR/view?usp=drivesdk">View</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="Contact">
+    <h1>Contact Me</h1>
+    <form>
+      <label>Full name</label>
+      <input type="text">
+      <label>Email</label>
+      <input type="email">
+      <label>Message</label>
+      <input type="text">
+      <button type="submit">Send</button>
+    </form>
+    <div class="social">
+      <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+  </section>
+
+  <script>
+    const toggleButton = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector("nav ul");
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    toggleButton.addEventListener("click", () => {
+      navMenu.classList.toggle("showing");
+    });
+
+    // Close menu on link click (mobile)
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("showing");
+      });
+    });
+  </script>
+
+</body>
+</html>
